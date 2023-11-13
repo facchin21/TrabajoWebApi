@@ -1,0 +1,13 @@
+td{
+    font-family: 'Times New Roman', Times, serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: rgb(51, 196, 236);
+}
+img, svg{
+    max-width: 55px;
+}

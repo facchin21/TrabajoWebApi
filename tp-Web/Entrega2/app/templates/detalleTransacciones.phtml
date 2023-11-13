@@ -1,0 +1,23 @@
+<?php
+    require('app/templates/header.phtml');
+?>
+       <div class="container d-flex justify-content-center">
+              <table class="table table-striped text-center">
+                     <tr>
+                            <th scope="col">transacionesID-ID</th>
+                            <th scope="col">canal</th>
+                            <th scope="col">ModeloID</th>
+                            <th scope="col">descuento</th>
+                            <th scope="col">precio</th>
+                     </tr>
+                     <?php foreach($transaccion as $t){?> 
+                            <tr class="table-info">
+                                   <td class="table-info"><a><?php echo $t->transacionesID ?></td>
+                                   <td class="table-info"><a><?php echo $t->canal ?></td>
+                                   <td class="table-info"><a><?php echo $t->modeloID ?></td>
+                                   <td class="table-info"><a><?php echo $t->descuento ?></td>
+                                   <td class="table-info"><a><?php echo $t->precio ?></td>
+                            </tr>
+                            <?php } ?>
+              </table>
+       </div>

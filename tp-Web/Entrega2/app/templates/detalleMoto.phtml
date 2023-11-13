@@ -1,0 +1,23 @@
+<?php
+    require('app/templates/header.phtml');
+?>
+       <div class="container d-flex justify-content-center">
+              <table class="table table-striped text-center">
+                     <tr>
+                            <th scope="col">Modelo-ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Capacidad Tanque</th>
+                            <th scope="col">cinlindrada</th>
+                            <th scope="col">fuerza</th>
+                     </tr>
+                     <?php foreach($producto as $moto){?> 
+                            <tr class="table-info">
+                                   <td class="table-info"><a><?php echo $moto->ModeloID ?></td>
+                                   <td class="table-info"><a><?php echo $moto->nombreProducto ?></td>
+                                   <td class="table-info"><a><?php echo $moto->capacidadTanque ?></td>
+                                   <td class="table-info"><a><?php echo $moto->cinlindrada ?></td>
+                                   <td class="table-info"><a><?php echo $moto->fuerza ?></td>
+                            </tr>
+                            <?php } ?>
+              </table>
+       </div>

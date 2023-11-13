@@ -1,0 +1,85 @@
+<form action="agregarTransacciones" method="post" class="p-3 mb-2 bg-info-subtle text-emphasis-info">
+    <div class="container">
+        <div>
+            <label class="form-label">Transacciones ID</label>
+            <input required name ="transacionesID" class="form-control border border-info" type="number" name="transacionesID">
+        </div>    
+            <div>
+                <label class="form-label">Modelo ID</label>
+                <input required name ="modeloID" class="form-control border border-info" type="number" name="modeloID">
+            </div>
+            <div>
+                <label class="form-label">Canal</label>
+                <select required name="canal" name="canal" class="form-select">
+                    <option value="Web">Web</option>
+                    <option value="Movil">Movil</option>
+                </select>
+            </div>
+                <div>
+                    <label class="form-label">descuento</label>
+                    <input class="form-control border border-info" type="number" name="descuento">
+                </div>
+                <div>
+                    <label class="form-label">precio</label>
+                    <input required name ="precio" class="form-control border border-info" type="number" name="precio">
+                </div>
+                <?php if (!isset($_SESSION['USER_ID'])) : ?>
+                    <?php else : ?>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                     <input class="btn btn-outline-info mt-3 btn-lg" type="submit" value="Agregar">
+              </div>
+              <?php endif ?>
+        </form>
+       </div>
+
+    </form>
+
+<div class="container mt-5 bg-info-subtle text-emphasis-info py-4">
+        <ul class="list-group">
+            <?php foreach ($transaccion as $t) : ?>
+            <table class="table">
+                <td class="table-light d-flex justify-content-between"><a href='detalleTransacciones/<?=$t->transacionesID?>'>
+                        Transaccion ID: <?=$t->transacionesID?> Canal: <?=$t->canal?></a>
+            </table>
+        </ul>
+        <div class="container d-flex flex-column">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="detalleTransacciones/<?=$t->transacionesID?>" class="btn btn-outline-secondary m-2" type="button">Mas detalles</a></td>
+            </div>
+            <?php if (!isset($_SESSION['USER_ID'])) : ?>
+                <?php else : ?>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a href="borrarTransacciones/<?=$t->transacionesID?>" class="btn btn-outline-secondary m-2" type="button">Borrar</a></td>
+                 </div>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+    </div>
+
+    <?php if (!isset($_SESSION['USER_ID'])) : ?>
+        <?php else : ?>
+    <div class="container mt-5 p-3 mb-2 bg-info-subtle text-emphasis-info">
+        <div class="p-2 bd-highlight">
+            <h2 class="display-6">Editar canal</h2>
+            <form action="editarTransaccion" method="POST">
+                <div class="mb-3">
+                    <select name="transacionesID" class="form-select">
+                        <?php foreach ($transaccion as $t) : ?>
+                            <option value="<?= $t->transacionesID ?>"><?= $t->transacionesID?> <?= $t->canal?></option>
+                            <?php endforeach; ?>
+                        </select>
+                </div>
+            <div class="mb-3">
+                <label   label class="form-label">Modelo ID</label>
+                <select required name="canal" name="canal" class="form-select">
+                    <option value="Web">Web</option>
+                    <option value="Movil">Movil</option>
+                </select>
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" value="Editar" class="btn btn-outline-info mt-3 btn-lg">
+            </div>
+        </form>
+    </div>
+</div>
+    <?php endif ?>

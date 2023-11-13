@@ -1,0 +1,80 @@
+<?php
+    require('app/templates/header.phtml');
+?>
+<form action="agregar" method="post" class="p-3 mb-2 bg-info-subtle text-emphasis-info">
+    <div class="container">
+        <div>
+            <label class="form-label">Nombre</label>
+            <input required name ="nombreProducto" class="form-control border border-info" type="text" name="nombreProducto">
+        </div>    
+        <div>
+            <label class="form-label">Modelo Id</label>
+            <input required name ="ModeloID" class="form-control border border-info" type="number" name="ModeloID">
+        </div>
+              <div>
+                  <label class="form-label">Capacidad Tanque</label>
+                  <input required name ="capacidadTanque" class="form-control border border-info" type="number" name="capacidadTanque">
+                </div>
+                <div>
+                    <label class="form-label">cinlindrada</label>
+                    <input required name ="cinlindrada" class="form-control border border-info" type="number" name="cinlindrada">
+                </div>
+                <div>
+                    <label class="form-label">Fuerza</label>
+                    <input required name ="fuerza" class="form-control border border-info" type="number" name="fuerza">
+                </div>
+                <?php if (!isset($_SESSION['USER_ID'])) : ?>
+                    <?php else : ?>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                     <input class="btn btn-outline-info mt-3 btn-lg" type="submit" value="Agregar">
+              </div>
+              <?php endif ?>
+        </form>
+       </div>
+    </form>
+
+    <div class="container mt-5 bg-info-subtle text-emphasis-info py-4">
+        <ul class="list-group">
+            <?php foreach ($producto as $moto) : ?>
+            <table class="table">
+                <td class="table-light d-flex justify-content-between"><a href='detalleModelo/<?=$moto->ModeloID?>'>
+                        Modelo ID: <?=$moto->ModeloID?> Nombre: <?=$moto->nombreProducto?></a>
+            </table>
+        </ul>
+        <div class="container d-flex flex-column">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="detalleModelo/<?=$moto->ModeloID?>" class="btn btn-outline-secondary m-2" type="button">Mas detalles</a></td>
+            </div>
+            <?php if (!isset($_SESSION['USER_ID'])) : ?>
+                <?php else : ?>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a href="borrar/<?=$moto->ModeloID?>" class="btn btn-outline-secondary m-2" type="button">Borrar</a></td>
+                 </div>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+    </div>
+
+    <?php if (!isset($_SESSION['USER_ID'])) : ?>
+        <?php else : ?>
+    <div class="container mt-5 p-3 mb-2 bg-info-subtle text-emphasis-info">
+        <div class="p-2 bd-highlight">
+            <h2 class="display-6">Editar nombre</h2>
+            <form action="editarMoto" method="POST">
+                <div class="mb-3">
+                    <select name="ModeloID" class="form-select">
+                        <?php foreach ($producto as $moto) : ?>
+                            <option value="<?= $moto->ModeloID ?>"><?= $moto->nombreProducto?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Ingrese modelo" name="nombreProducto" class="form-control border border-info">
+            </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <input type="submit" value="Editar" class="btn btn-outline-info mt-3 btn-lg">
+            </div>
+        </form>
+    </div>
+</div>
+    <?php endif ?>
