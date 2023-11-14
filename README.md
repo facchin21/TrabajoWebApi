@@ -50,6 +50,7 @@ api/motos (con método POST) agrega una moto nueva cuando la reciba con un JSON,
         "fuerza": 21,
         "nombreProducto": "Pepe"
     }
+```
 ___________________________________________________________________________________________________
 api/motos:ID (con método PUT) modifica la moto con la ID(ModeloID) que se pasa por parametro con sus características en formato JSON, ejemplo:
 api/motos/4
