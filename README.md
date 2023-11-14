@@ -28,6 +28,7 @@ api/motos (con método GET) trae todas las motos con sus características en for
         "nombreProducto": "wCarlos"
     }
 ]
+```
 ___________________________________________________________________________________________________
 api/motos:ID (con método GET)  trae la moto con la ID(ModeloID) que se pasa por parametro con sus características en formato JSON, ejemplo:
 api/motos/4
@@ -40,6 +41,7 @@ api/motos/4
         "nombreProducto": "Pepe"
     }
 ]
+```
 ___________________________________________________________________________________________________
 api/motos (con método POST) agrega una moto nueva cuando la reciba con un JSON, por ejemplo:
   ```  {
@@ -57,6 +59,7 @@ api/motos/4
         "fuerza": 25,
         "nombreProducto": "titan"
     }
+```
 ___________________________________________________________________________________________________
 api/motos:ID (con método DELETE) elimina la moto con el ID(ModeloID) que se pasa por parámetro junto con todas sus características, por ejemplo:
 api/motos/4
@@ -77,6 +80,7 @@ api/motos/nombreProducto/titan
         "fuerza": 21,
         "nombreProducto": " titan "
     }
+```
 ___________________________________________________________________________________________________
 api/transacciones (con método GET) trae todas las transacciones con sus características en formato JSON, por ejemplo:
 ```[
@@ -95,6 +99,7 @@ api/transacciones (con método GET) trae todas las transacciones con sus caracte
         "descuento": 100
     }
 ]
+```
 ___________________________________________________________________________________________________
 api/transacciones (con método POST) agrega una transaccion nueva cuando la reciba con un JSON, por ejemplo:
   ```  {
@@ -103,6 +108,7 @@ api/transacciones (con método POST) agrega una transaccion nueva cuando la reci
         "precio": 999,
         "descuento": 100
     }
+```
 ___________________________________________________________________________________________________
 api/transacciones/:ID (con método GET)  trae la transaccion con la ID(transaccionesID) que se pasa por parametro con sus características en formato JSON, ejemplo:
 api/transacciones/1415
@@ -113,6 +119,7 @@ api/transacciones/1415
         "precio": 999,
         "descuento": 100
     }
+```
 ___________________________________________________________________________________________________
 api/transacciones/:ID (con método PUT) modifica la transaccion con la ID(transaccionesID) que se pasa por parametro con sus características en formato JSON, ejemplo: 
 api/transacciones/1415
@@ -122,6 +129,7 @@ api/transacciones/1415
         "precio": 1500,
         "descuento": 0
     }
+```
 ___________________________________________________________________________________________________
 api/transacciones/:ID (con método DELETE) elimina la transaccion con el ID(transaccionesID) que se pasa por parámetro junto con todas sus características, por ejemplo:
 api/transacciones/1415
@@ -144,6 +152,7 @@ api/transacciones/canal/Web
         "descuento": 0
     }
 ]
+```
 ___________________________________________________________________________________________________
 api/transacciones/orden/:ORDEN(con método GET) Devuelve las transacciones ordenadas de forma ascendente o descendente por el precio. El parametro :ORDER debe ser reemplazado por "asc" o por "desc" para que sea ordenado de alguna de las mismas, por ejemplo:
 api/transacciones/orden/asc
@@ -170,6 +179,7 @@ api/transacciones/orden/asc
         "descuento": 0
     }
 ]
+```
 ___________________________________________________________________________________________________
 api/auth/token(con método POST) Para poder utilizar los métodos PUT, POST o DELETE el usuario debe ser autorizado, por eso a traves del endpoint POST auth/token debe hacer un "Basic Auth" ingresando usuario (webadmin) y password (admin). Cuando tiene el token debe ingresar a "Headers" , en el campo “key” escribe "Authorization" y en el campo “Value” escribe “Bearer” seguido del token generado. Luego de esto volvemos a “Headers”, seleccionamos en “Type” “Bearer Token” y en el campo “Token” pega el token generado. 
 Luego de seguir estos pasos el usuario podrá utilizar los métodos PUT, POST o DELETE según desee durante 60 minutos, pasado este tiempo tendrá que verificarse nuevamente.
