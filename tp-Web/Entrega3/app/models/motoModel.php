@@ -6,8 +6,8 @@ class MotoModel extends Model {
 	public function GetMotos(){
         $query = $this->db->prepare( "select * from motos");
         $query->execute();
-        $tareas = $query->fetchAll(PDO::FETCH_OBJ);
-        return $tareas;
+        $moto = $query->fetchAll(PDO::FETCH_OBJ);
+        return $moto;
     }
 
     public function GetMotoById($ModeloID){
